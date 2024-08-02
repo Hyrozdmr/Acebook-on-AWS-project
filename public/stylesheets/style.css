@@ -94,20 +94,24 @@ input[type="submit"]:hover {
 
 
 
+/* 
+logout/Users/layout.hbs */
+
+
 .logout-container {
-  position: absolute; 
-  top: 20px; 
-  right: 20px;
+  position: absolute; /* Allow positioning the button */
+  top: 20px; /* Adjust distance from the top */
+  right: 20px; /* Adjust distance from the right */
 }
 
 .logout-button {
-  background-color: #ff6b6b; 
-  color: white; 
-  border: none; 
-  border-radius: 5px; 
-  padding: 10px 15px; 
-  cursor: pointer; 
-  transition: background-color 0.3s; 
+  background-color: #ff6b6b; /* Pastel red color for the button */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for better touch target */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .logout-button:hover {
@@ -122,7 +126,6 @@ h1 {
 .title {
   margin-top: 50px; /* Space from the top */
 }
-
 
 
 

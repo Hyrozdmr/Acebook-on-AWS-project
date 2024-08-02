@@ -39,6 +39,7 @@ const PostsController = {
       });
   },
 
+
   Unlike: (req, res) => {
     const postId = req.params.id; // Get the post ID from the request parameters
     Post.findByIdAndUpdate(postId, { $inc: { likes: -1 } }, { new: true })
@@ -69,6 +70,5 @@ const PostsController = {
       });
   },
 };
-
 
 module.exports = PostsController;
