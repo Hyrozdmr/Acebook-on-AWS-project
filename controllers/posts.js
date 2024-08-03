@@ -2,10 +2,12 @@ const Post = require("../models/post");
 
 const PostsController = {
   Index: (req, res) => {
-    Post.find((err, posts) => {
-      if (err) {
-        throw err;
-      }
+    Post.find()
+      .sort({ createdAt: -1 })
+      .exec((err, posts) => {
+        if (err) {
+          throw err;
+        }
 
       res.render("posts/index", { posts: posts });
     });
@@ -69,6 +71,26 @@ const PostsController = {
         res.status(500).send("Server error");
       });
   },
-};
 
+  AddComment: (req, res) => {
+    const postId = req.params.id; // Get the post ID from the request parameters
+    const comment = { message: req.body.comment }; // Create a new comment object
+  
+    Post.findByIdAndUpdate(
+      postId,
+      { $push: { comments: comment } }, // Push the new comment into the comments array
+      { new: true }
+    )
+      .then((post) => { // Removed the extra parenthesis here
+        if (!post) {
+          return res.status(404).send("Post not found");
+        }
+        res.redirect("/posts"); // Redirect back to the posts page
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Server error");
+      });
+  },
+};  
 module.exports = PostsController;
